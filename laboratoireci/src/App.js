@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { useState } from "react";
 
-function App() {
+export default function App() { const [reverseS, setReverseS] = useState("");
+  const [error, setError] = useState("");
+  let valuer = " ";
+
+  const handleChange = (e) => { valuer = e.target.value ; 
+    if (value.length <= 9 ) { let valuerReversed = value.split("").reverse().join("");
+      setReverseS(valuerReversed );
+    }
+    else 
+    {
+      setError("Erreur, on n'acceptons pas plus que 9 caractéres.")
+    }
+    
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> 'Inverseur d'une phrase' </h1>
+      <div className="reverse">
+        <label className="reservedString">{reverseStr}</label>
+      </div>
+      <br />
+      <form className="String">
+        <input className="input" onChange={handleChange} />
+      </form>
+      <br />
+      <div className="error">{error}</div>
+      
     </div>
   );
 }
 
-export default App;
